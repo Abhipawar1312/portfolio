@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Download, Mail, MapPin, ArrowDown } from 'lucide-react';
+import { Download, Mail, MapPin, ArrowDown, Terminal } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
@@ -125,35 +125,96 @@ export const Hero: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Profile Photo Column */}
-          {personal.avatarUrl && (
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative group"
-              >
-                {/* Ambient Glow */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-accent-500/20 via-emerald-500/10 to-transparent rounded-full blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none" />
+          {/* Right Column: Interactive Developer Code Window */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="relative w-full max-w-md group"
+            >
+              {/* Ambient Glow */}
+              <div className="absolute -inset-3 bg-gradient-to-tr from-accent-500/20 via-emerald-500/10 to-transparent rounded-3xl blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Profile Image with Transparent Background */}
-                <div className="relative flex items-end justify-center">
-                  <img
-                    src={personal.avatarUrl}
-                    alt={personal.name}
-                    className="w-auto h-72 sm:h-84 md:h-96 max-w-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_12px_28px_rgba(16,185,129,0.2)] transition-transform duration-500 group-hover:scale-105"
-                  />
+              {/* Terminal / Code Window Card */}
+              <div className="relative rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-900/90 shadow-xl backdrop-blur-md overflow-hidden font-mono text-xs sm:text-[13px]">
+                {/* Window Header */}
+                <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100/70 dark:bg-zinc-950/70">
+                  <div className="flex items-center gap-2">
+                    <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+                    <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+                    <span className="ml-2 text-xs font-sans text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                      <Terminal className="w-3.5 h-3.5" />
+                      developer.ts
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-sans font-medium text-accent-600 dark:text-accent-400 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-500 animate-pulse" />
+                    Available
+                  </span>
                 </div>
 
-                {/* Floating Experience Badge */}
-                <div className="absolute -bottom-3 -left-3 sm:-left-4 px-3.5 py-2 rounded-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 shadow-lg text-xs font-semibold text-zinc-800 dark:text-zinc-200 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-accent-500 animate-pulse" />
-                  <span>2+ Years Experience</span>
+                {/* Code Content */}
+                <div className="p-4 sm:p-5 text-zinc-800 dark:text-zinc-200 space-y-1 leading-relaxed overflow-x-auto">
+                  <div>
+                    <span className="text-purple-600 dark:text-purple-400 font-semibold">const</span>{' '}
+                    <span className="text-blue-600 dark:text-blue-400 font-semibold">engineer</span> = &#123;
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-zinc-500 dark:text-zinc-400">name:</span>{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400">"{personal.name}"</span>,
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-zinc-500 dark:text-zinc-400">role:</span>{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400">"{personal.role}"</span>,
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-zinc-500 dark:text-zinc-400">experience:</span>{' '}
+                    <span className="text-amber-600 dark:text-amber-400">"2+ Years"</span>,
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-zinc-500 dark:text-zinc-400">coreTech:</span> [
+                    <span className="text-emerald-600 dark:text-emerald-400">"React"</span>,{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400">"TypeScript"</span>,{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400">"Angular"</span>],
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-zinc-500 dark:text-zinc-400">state:</span> [
+                    <span className="text-emerald-600 dark:text-emerald-400">"Redux"</span>,{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400">"Zustand"</span>],
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-zinc-500 dark:text-zinc-400">testing:</span> [
+                    <span className="text-emerald-600 dark:text-emerald-400">"Jest"</span>,{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400">"Vitest"</span>,{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400">"RTL"</span>],
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-zinc-500 dark:text-zinc-400">status:</span>{' '}
+                    <span className="text-accent-600 dark:text-accent-400 font-semibold">"Ready for Impact"</span>
+                  </div>
+                  <div>&#125;;</div>
                 </div>
-              </motion.div>
-            </div>
-          )}
+
+                {/* Bottom Metrics Bar */}
+                <div className="grid grid-cols-3 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 py-2.5 px-2 text-center font-sans">
+                  <div>
+                    <div className="text-sm font-bold text-accent-600 dark:text-accent-400">2+</div>
+                    <div className="text-[10px] text-zinc-500 dark:text-zinc-400">Years Exp</div>
+                  </div>
+                  <div className="border-x border-zinc-200 dark:border-zinc-800">
+                    <div className="text-sm font-bold text-accent-600 dark:text-accent-400">2</div>
+                    <div className="text-[10px] text-zinc-500 dark:text-zinc-400">Key Projects</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-accent-600 dark:text-accent-400">100%</div>
+                    <div className="text-[10px] text-zinc-500 dark:text-zinc-400">Tested & Clean</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Subtle scroll down indicator */}
