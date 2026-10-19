@@ -31,12 +31,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Dark Theme by Default Script (Forces Dark Theme on Load) -->
+    <!-- Immediate theme setter (Guarantees Dark Mode by default) -->
     <script>
       (function() {
         try {
-          var stored = localStorage.getItem('portfolio-theme-v2');
-          if (stored === 'light') {
+          var saved = localStorage.getItem('portfolio-theme-mode');
+          if (saved === 'light') {
             document.documentElement.classList.remove('dark');
             document.documentElement.classList.add('light');
           } else {
@@ -49,7 +49,7 @@
       })();
     </script>
   </head>
-  <body class="bg-navy-950 text-white font-sans antialiased transition-colors duration-300 selection:bg-accent-600/30 selection:text-accent-400">
+  <body class="font-sans antialiased selection:bg-accent-600/30 selection:text-accent-400">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

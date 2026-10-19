@@ -9,10 +9,12 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const THEME_STORAGE_KEY = 'portfolio-theme-mode';
+
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('portfolio-theme-v2') as Theme | null;
+      const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
       if (savedTheme === 'light' || savedTheme === 'dark') {
         return savedTheme;
       }
@@ -38,7 +40,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
 
     try {
-      localStorage.setItem('portfolio-theme-v2', theme);
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
     } catch (e) {
       console.error('Failed to save theme in localStorage', e);
     }

@@ -13,7 +13,13 @@ import { Footer } from './components/Footer';
 export const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white flex flex-col font-sans transition-colors duration-300 selection:bg-accent-600/25 selection:text-accent-500">
+      <div
+        className="min-h-screen flex flex-col font-sans transition-colors duration-300 selection:bg-accent-600/25 selection:text-accent-500"
+        style={{
+          backgroundColor: 'var(--bg-page)',
+          color: 'var(--text-main)',
+        }}
+      >
         <Navbar />
         <main className="flex-1">
           <Hero />
