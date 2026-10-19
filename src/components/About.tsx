@@ -4,6 +4,7 @@ import { portfolioData } from '../data/portfolio';
 
 const keyTech = [
   'React.js',
+  'JavaScript (ES6+)',
   'TypeScript',
   'Angular',
   'Redux Toolkit',
@@ -19,10 +20,10 @@ export const About: React.FC = () => {
   return (
     <section id="about" className="py-20 md:py-24 bg-zinc-100/60 dark:bg-navy-900/60 border-y border-zinc-200/80 dark:border-navy-800/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Main Grid: Headline on left, big numbers on right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
+
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}

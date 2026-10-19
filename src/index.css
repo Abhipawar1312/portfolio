@@ -3,24 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --bg-page: #0b0f19;
-  --bg-card: #151d30;
-  --bg-card-subtle: #111726;
+  --bg-page: #000000;
+  --bg-card: #121215;
+  --bg-card-subtle: #09090b;
   --text-main: #ffffff;
-  --text-muted: #94a3b8;
-  --border-card: #222f4c;
+  --text-muted: #a1a1aa;
+  --border-card: #232328;
   color-scheme: dark;
   --accent: #2563eb;
 }
 
 html.dark,
 :root:not(.light) {
-  --bg-page: #0b0f19;
-  --bg-card: #151d30;
-  --bg-card-subtle: #111726;
+  --bg-page: #000000;
+  --bg-card: #121215;
+  --bg-card-subtle: #09090b;
   --text-main: #ffffff;
-  --text-muted: #94a3b8;
-  --border-card: #222f4c;
+  --text-muted: #a1a1aa;
+  --border-card: #232328;
   color-scheme: dark;
 }
 
@@ -79,12 +79,12 @@ html.light {
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #1a243b;
+  background: #232328;
   border-radius: 9999px;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
+  background: #3f3f46;
 }
 
 ::-webkit-scrollbar-thumb {

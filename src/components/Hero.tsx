@@ -9,8 +9,8 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="relative pt-6 pb-12 md:pt-12 md:pb-20 overflow-hidden">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-600/10 dark:bg-accent-600/15 rounded-full blur-[120px] pointer-events-none" />
+      {/* Background radial subtle neutral lighting */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-400/10 dark:bg-zinc-800/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
@@ -66,15 +66,15 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-5 flex justify-center items-end relative"
           >
-            {/* Ambient Back Glow */}
-            <div className="absolute inset-x-8 bottom-0 h-64 bg-gradient-to-t from-accent-600/20 via-accent-500/10 to-transparent rounded-full blur-2xl pointer-events-none" />
+            {/* Ambient Back Lighting */}
+            <div className="absolute inset-x-8 bottom-0 h-44 bg-gradient-to-t from-zinc-700/15 dark:from-zinc-800/30 via-transparent to-transparent rounded-full blur-2xl pointer-events-none" />
 
             {/* Profile Cutout Image */}
             <div className="relative z-10 w-full max-w-[290px] sm:max-w-[340px] flex justify-center items-end">
               <img
                 src={personal.avatarUrl}
                 alt={personal.name}
-                className="w-full h-auto max-h-[420px] sm:max-h-[480px] object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_20px_40px_rgba(37,99,235,0.25)] transition-transform duration-500 hover:scale-[1.02]"
+                className="w-full h-auto max-h-[420px] sm:max-h-[480px] object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)] transition-transform duration-500 hover:scale-[1.02]"
               />
             </div>
           </motion.div>
