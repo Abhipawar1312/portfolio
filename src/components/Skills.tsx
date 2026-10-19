@@ -73,22 +73,20 @@ export const Skills: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: idx * 0.08 }}
-                className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-navy-850 border border-zinc-200/90 dark:border-navy-750 hover:border-accent-500/50 dark:hover:border-accent-500/50 transition-all duration-300 shadow-sm hover:shadow-xl group flex flex-col justify-between"
+                className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-navy-850 border border-zinc-200/90 dark:border-navy-750 hover:border-accent-500/50 dark:hover:border-accent-500/50 transition-all duration-300 shadow-sm hover:shadow-xl group flex flex-col"
               >
-                <div>
-                  {/* Blue Icon Bubble */}
-                  <div className="w-12 h-12 rounded-2xl bg-accent-600 flex items-center justify-center shadow-lg shadow-accent-600/25 mb-6 group-hover:scale-105 transition-transform duration-200">
-                    {meta.icon}
-                  </div>
-
-                  <h3 className="text-xl font-bold text-zinc-950 dark:text-white tracking-tight mb-2">
-                    {group.category}
-                  </h3>
-
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
-                    {meta.subtitle}
-                  </p>
+                {/* Blue Icon Bubble */}
+                <div className="w-12 h-12 rounded-2xl bg-accent-600 flex items-center justify-center shadow-lg shadow-accent-600/25 mb-6 group-hover:scale-105 transition-transform duration-200">
+                  {meta.icon}
                 </div>
+
+                <h3 className="text-xl font-bold text-zinc-950 dark:text-white tracking-tight mb-2">
+                  {group.category}
+                </h3>
+
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5">
+                  {meta.subtitle}
+                </p>
 
                 {/* Skill Pills */}
                 <div className="flex flex-wrap gap-1.5 pt-4 border-t border-zinc-100 dark:border-navy-800">
