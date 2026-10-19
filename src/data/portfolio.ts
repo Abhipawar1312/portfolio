@@ -8,7 +8,7 @@ export const portfolioData: PortfolioData = {
     email: "abhishekpawar131202@gmail.com",
     phone: "8291579474",
     location: "Mumbai, India",
-    avatarUrl: "/profileImage.png",
+    avatarUrl: "/profileImage.png?v=3",
     resumeFile: "/Abhishek_Pawar_Resume.pdf",
     socials: {
       github: "https://github.com/Abhipawar1312",
