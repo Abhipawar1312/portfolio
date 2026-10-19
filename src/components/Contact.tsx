@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Copy, Check } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ArrowRight, Copy, Check } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
@@ -27,7 +27,6 @@ export const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Prepare mailto link with encoded parameters
     const subject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
@@ -37,46 +36,45 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 border-t border-zinc-200/80 dark:border-zinc-800/80">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex items-center gap-2 mb-3 text-accent-600 dark:text-accent-400 font-semibold text-sm uppercase tracking-wider">
-          <Mail className="w-4 h-4" />
-          <span>Get In Touch</span>
-        </div>
-        <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-          Let's Connect & Collaborate
-        </h2>
-        <p className="mt-2 text-zinc-600 dark:text-zinc-400 max-w-2xl text-base">
-          Feel free to reach out for career opportunities, engineering inquiries, or project discussions.
-        </p>
-
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Direct Contact Info */}
+    <section id="contact" className="py-20 md:py-28 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Left Column: Big Invitation Header & Quick Contact */}
           <motion.div
             initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="lg:col-span-5 space-y-6 p-6 sm:p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm"
+            className="lg:col-span-5 space-y-6"
           >
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-              Contact Information
-            </h3>
+            <div className="text-xs font-bold uppercase tracking-widest text-accent-600 dark:text-accent-400">
+              Get in Touch
+            </div>
 
-            <div className="space-y-4 text-sm">
-              {/* Email item with copy button */}
-              <div className="flex items-start justify-between gap-2 p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200/60 dark:border-zinc-700/60">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-950 dark:text-white tracking-tight leading-tight">
+              Interested in working together?
+              <br />
+              <span className="text-accent-600 dark:text-accent-400 inline-flex items-center gap-2 mt-2">
+                Let's talk <ArrowRight className="w-8 h-8" />
+              </span>
+            </h2>
+
+            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal pt-2">
+              Whether you have an open frontend opportunity, a project to build, or simply want to connect, my inbox is always open.
+            </p>
+
+            {/* Direct Contact Cards */}
+            <div className="pt-4 space-y-3 text-xs sm:text-sm">
+              <div className="flex items-center justify-between p-3.5 rounded-2xl bg-zinc-100 dark:bg-navy-850 border border-zinc-200/80 dark:border-navy-750">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-accent-500/10 text-accent-600 dark:text-accent-400">
+                  <div className="w-8 h-8 rounded-full bg-accent-600 flex items-center justify-center text-white">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-xs text-zinc-500 dark:text-zinc-400">Email</div>
-                    <a
-                      href={`mailto:${personal.email}`}
-                      className="font-medium text-zinc-900 dark:text-zinc-100 hover:text-accent-600 dark:hover:text-accent-400 transition-colors break-all"
-                    >
+                    <div className="text-[10px] uppercase font-semibold text-zinc-400">Email</div>
+                    <a href={`mailto:${personal.email}`} className="font-semibold text-zinc-900 dark:text-white hover:text-accent-500 transition-colors">
                       {personal.email}
                     </a>
                   </div>
@@ -84,88 +82,73 @@ export const Contact: React.FC = () => {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  title="Copy email to clipboard"
-                  className="p-1.5 rounded-md hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-500 dark:text-zinc-400 transition-colors shrink-0"
+                  title="Copy email"
+                  className="p-1.5 rounded-md hover:bg-zinc-200 dark:hover:bg-navy-800 text-zinc-500 transition-colors"
                 >
-                  {copied ? <Check className="w-4 h-4 text-accent-600 dark:text-accent-400" /> : <Copy className="w-4 h-4" />}
+                  {copied ? <Check className="w-4 h-4 text-accent-600" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
 
-              {/* Phone item */}
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200/60 dark:border-zinc-700/60">
-                <div className="p-2 rounded-lg bg-accent-500/10 text-accent-600 dark:text-accent-400">
+              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-100 dark:bg-navy-850 border border-zinc-200/80 dark:border-navy-750">
+                <div className="w-8 h-8 rounded-full bg-accent-600 flex items-center justify-center text-white">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-xs text-zinc-500 dark:text-zinc-400">Phone</div>
-                  <a
-                    href={`tel:${personal.phone}`}
-                    className="font-medium text-zinc-900 dark:text-zinc-100 hover:text-accent-600 dark:hover:text-accent-400 transition-colors"
-                  >
+                  <div className="text-[10px] uppercase font-semibold text-zinc-400">Phone</div>
+                  <a href={`tel:${personal.phone}`} className="font-semibold text-zinc-900 dark:text-white hover:text-accent-500 transition-colors">
                     +91 {personal.phone}
                   </a>
                 </div>
               </div>
 
-              {/* Location item */}
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200/60 dark:border-zinc-700/60">
-                <div className="p-2 rounded-lg bg-accent-500/10 text-accent-600 dark:text-accent-400">
+              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-100 dark:bg-navy-850 border border-zinc-200/80 dark:border-navy-750">
+                <div className="w-8 h-8 rounded-full bg-accent-600 flex items-center justify-center text-white">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-xs text-zinc-500 dark:text-zinc-400">Location</div>
-                  <div className="font-medium text-zinc-900 dark:text-zinc-100">
-                    {personal.location}
-                  </div>
+                  <div className="text-[10px] uppercase font-semibold text-zinc-400">Location</div>
+                  <div className="font-semibold text-zinc-900 dark:text-white">{personal.location}</div>
                 </div>
               </div>
             </div>
 
-            {/* Social Profile Links */}
-            <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800">
-              <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
-                Social Profiles
-              </div>
-              <div className="flex gap-3">
-                <a
-                  href={personal.socials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-accent-600 dark:hover:text-accent-400 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors"
-                >
-                  <GithubIcon className="w-4 h-4" />
-                  <span>GitHub</span>
-                </a>
-                <a
-                  href={personal.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-accent-600 dark:hover:text-accent-400 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors"
-                >
-                  <LinkedinIcon className="w-4 h-4" />
-                  <span>LinkedIn</span>
-                </a>
-              </div>
+            {/* Social Links */}
+            <div className="pt-2 flex items-center gap-3">
+              <a
+                href={personal.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-navy-850 text-zinc-800 dark:text-zinc-200 border border-zinc-200/70 dark:border-navy-750 hover:bg-accent-600 hover:text-white transition-colors"
+              >
+                <GithubIcon className="w-4 h-4" />
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href={personal.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-navy-850 text-zinc-800 dark:text-zinc-200 border border-zinc-200/70 dark:border-navy-750 hover:bg-accent-600 hover:text-white transition-colors"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+                <span>LinkedIn</span>
+              </a>
             </div>
           </motion.div>
 
-          {/* Simple Contact Form */}
+          {/* Right Column: Clean Modern Form */}
           <motion.div
             initial={{ opacity: 0, x: 15 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm"
+            className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white dark:bg-navy-850 border border-zinc-200/90 dark:border-navy-750 shadow-sm"
           >
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">
-              Send a Direct Message
-            </h3>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                    Your Name <span className="text-accent-500">*</span>
+                  <label htmlFor="name" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
+                    Your Name *
                   </label>
                   <input
                     type="text"
@@ -175,13 +158,13 @@ export const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 text-zinc-900 dark:text-zinc-100 text-sm focus:border-accent-500 focus:bg-white dark:focus:bg-zinc-900 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-navy-700 bg-zinc-50 dark:bg-navy-900 text-zinc-950 dark:text-white text-sm focus:border-accent-500 focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                    Your Email <span className="text-accent-500">*</span>
+                  <label htmlFor="email" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
+                    Your Email *
                   </label>
                   <input
                     type="email"
@@ -191,13 +174,13 @@ export const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 text-zinc-900 dark:text-zinc-100 text-sm focus:border-accent-500 focus:bg-white dark:focus:bg-zinc-900 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-navy-700 bg-zinc-50 dark:bg-navy-900 text-zinc-950 dark:text-white text-sm focus:border-accent-500 focus:outline-none transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                <label htmlFor="subject" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
                   Subject
                 </label>
                 <input
@@ -206,14 +189,14 @@ export const Contact: React.FC = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Frontend Role Opportunity / Project Discussion"
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 text-zinc-900 dark:text-zinc-100 text-sm focus:border-accent-500 focus:bg-white dark:focus:bg-zinc-900 transition-colors"
+                  placeholder="Frontend Role Opportunity / Project"
+                  className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-navy-700 bg-zinc-50 dark:bg-navy-900 text-zinc-950 dark:text-white text-sm focus:border-accent-500 focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                  Message <span className="text-accent-500">*</span>
+                <label htmlFor="message" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
+                  Your Message *
                 </label>
                 <textarea
                   id="message"
@@ -222,17 +205,17 @@ export const Contact: React.FC = () => {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Write your message here..."
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 text-zinc-900 dark:text-zinc-100 text-sm focus:border-accent-500 focus:bg-white dark:focus:bg-zinc-900 transition-colors resize-none"
+                  placeholder="Tell me about your project, team, or opportunity..."
+                  className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-navy-700 bg-zinc-50 dark:bg-navy-900 text-zinc-950 dark:text-white text-sm focus:border-accent-500 focus:outline-none transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold bg-accent-600 hover:bg-accent-700 text-white shadow-sm transition-all duration-200 active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold bg-accent-600 hover:bg-accent-700 text-white shadow-lg shadow-accent-600/30 transition-all duration-200 active:scale-95"
               >
+                <span>Send Message</span>
                 <Send className="w-4 h-4" />
-                <span>Send Message via Email</span>
               </button>
 
               {status === 'success' && (
@@ -242,7 +225,9 @@ export const Contact: React.FC = () => {
               )}
             </form>
           </motion.div>
+
         </div>
+
       </div>
     </section>
   );

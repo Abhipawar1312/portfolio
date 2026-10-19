@@ -11,9 +11,8 @@ interface NavItem {
 const navLinks: NavItem[] = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
-  { name: 'Education', href: '#education' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -37,39 +36,46 @@ export const Navbar: React.FC = () => {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80 shadow-sm'
+          ? 'bg-navy-950/85 dark:bg-navy-950/85 bg-white/85 backdrop-blur-md border-b border-navy-800/60 dark:border-navy-800/60 border-zinc-200/80 shadow-md'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo / Name */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo / Brand Name */}
           <a
             href="#"
-            className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-bold text-lg tracking-tight hover:text-accent-600 dark:hover:text-accent-400 transition-colors"
-            aria-label={`${portfolioData.personal.name} home page`}
+            className="flex items-center gap-2.5 text-zinc-900 dark:text-white font-extrabold text-xl tracking-tight hover:text-accent-500 transition-colors"
+            aria-label={`${portfolioData.personal.name} home`}
           >
-            <span className="w-8 h-8 rounded-lg bg-accent-500/10 dark:bg-accent-500/20 border border-accent-500/30 flex items-center justify-center text-accent-600 dark:text-accent-400 font-extrabold text-sm">
+            <span className="w-9 h-9 rounded-full bg-accent-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-accent-600/30">
               AP
             </span>
-            <span>{portfolioData.personal.name}</span>
+            <span className="font-bold">{portfolioData.personal.name}</span>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1" aria-label="Main Navigation">
+          {/* Desktop Nav Links */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-1.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+                className="px-3.5 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white rounded-lg hover:bg-zinc-100 dark:hover:bg-navy-850/80 transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* Right Action: Theme Toggle & Mobile Hamburger */}
-          <div className="flex items-center gap-2">
+          {/* Right Action: Contact Button & Theme Toggle */}
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-semibold bg-accent-600 hover:bg-accent-700 text-white shadow-md shadow-accent-600/25 transition-all duration-200 active:scale-95"
+            >
+              Let's Talk
+            </a>
+
             <ThemeToggle />
 
             {/* Mobile menu button */}
@@ -77,9 +83,9 @@ export const Navbar: React.FC = () => {
               type="button"
               onClick={() => setIsOpen(!isOpen)}
               id="mobile-menu-toggle"
-              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isOpen}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+              className="md:hidden p-2 rounded-lg text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-navy-850 transition-colors"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -89,17 +95,26 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile menu dropdown */}
       {isOpen && (
-        <div className="md:hidden border-b border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-lg px-4 pt-2 pb-4 space-y-1 animate-fadeIn">
+        <div className="md:hidden border-b border-zinc-200 dark:border-navy-800 bg-white/95 dark:bg-navy-950/95 backdrop-blur-xl px-4 pt-3 pb-5 space-y-1.5 shadow-xl">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={handleLinkClick}
-              className="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:text-accent-600 dark:hover:text-accent-400 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+              className="block px-3 py-2 rounded-lg text-base font-medium text-zinc-700 dark:text-zinc-200 hover:text-accent-500 hover:bg-zinc-100 dark:hover:bg-navy-850 transition-colors"
             >
               {link.name}
             </a>
           ))}
+          <div className="pt-2">
+            <a
+              href="#contact"
+              onClick={handleLinkClick}
+              className="block text-center w-full py-2.5 rounded-lg text-sm font-semibold bg-accent-600 hover:bg-accent-700 text-white shadow-md"
+            >
+              Let's Talk
+            </a>
+          </div>
         </div>
       )}
     </header>
